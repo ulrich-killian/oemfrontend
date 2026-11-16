@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { apiGetOrNull, formatUsd, type PartDetail } from '@/lib/api';
+import { AddToCart } from '@/app/components/add-to-cart';
 
 export default async function PartPage({
   params,
@@ -32,7 +33,7 @@ export default async function PartPage({
       {part.weight_kg && (
         <p className="mt-2 text-sm text-gray-500">Shipping weight: {part.weight_kg} kg</p>
       )}
-
+      <AddToCart partId={part.id} inStock={inStock} />
       <h2 className="mt-8 text-xl font-semibold">Fits these vehicles</h2>
       {part.fits.length === 0 ? (
         <p className="mt-3 text-gray-500">No vehicles listed yet.</p>
