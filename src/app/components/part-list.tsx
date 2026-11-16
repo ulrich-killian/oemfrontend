@@ -1,4 +1,5 @@
 import { formatUsd, type Part } from '@/lib/api';
+import Link from 'next/link';
 
 export function PartList({ parts }: { parts: Part[] }) {
   return (
@@ -6,7 +7,9 @@ export function PartList({ parts }: { parts: Part[] }) {
       {parts.map((p) => (
         <li key={p.id} className="flex items-center justify-between rounded border p-4">
           <div>
-            <div className="font-medium">{p.name}</div>
+          <Link href={`/parts/${p.id}`} className="font-medium hover:underline">
+  {p.name}
+</Link>
             <div className="text-sm text-gray-500">OEM {p.oem_number}</div>
           </div>
           <div className="text-right">
