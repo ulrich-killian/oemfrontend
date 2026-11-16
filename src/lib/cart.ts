@@ -47,3 +47,15 @@ export function addToCart(partId: number, qty: number): boolean {
   }
   return writeCart(cart);
 }
+
+export function setQuantity(partId: number, qty: number): boolean {
+   const cart = readCart();
+   const line = cart.find((l) => l.part_id === partId);
+   if (!line) return true;
+   line.qty = Math.min(Math.max(qty, 1), MAX_QTY);
+   return writeCart(cart);
+ }
+ 
+ export function removeFromCart(partId: number): boolean {
+   return writeCart(readCart().filter((l) => l.part_id !== partId));
+ }

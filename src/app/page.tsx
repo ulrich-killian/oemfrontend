@@ -12,6 +12,7 @@ export default async function Home() {
         Genuine OEM parts. Pick your brand to find what fits.
       </p>
       <SearchForm />
+      <p className="mt-4"><Link href="/cart" className="underline">View cart</Link></p>
       <ul className="mt-6 grid grid-cols-2 gap-3">
         {brands.map((b) => (
          <li key={b.id}>
