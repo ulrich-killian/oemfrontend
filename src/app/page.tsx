@@ -1,5 +1,6 @@
 import { apiGet, type Brand } from '@/lib/api';
 import Link from 'next/link';
+import { SearchForm } from '@/app/components/search-form';
 
 export default async function Home() {
   const brands = await apiGet<Brand[]>('/brands');
@@ -10,6 +11,7 @@ export default async function Home() {
       <p className="mt-2 text-gray-500">
         Genuine OEM parts. Pick your brand to find what fits.
       </p>
+      <SearchForm />
       <ul className="mt-6 grid grid-cols-2 gap-3">
         {brands.map((b) => (
          <li key={b.id}>
