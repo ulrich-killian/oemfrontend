@@ -59,3 +59,12 @@ export function setQuantity(partId: number, qty: number): boolean {
  export function removeFromCart(partId: number): boolean {
    return writeCart(readCart().filter((l) => l.part_id !== partId));
  }
+
+ export function clearCart(): boolean {
+  try {
+    window.localStorage.removeItem(KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}

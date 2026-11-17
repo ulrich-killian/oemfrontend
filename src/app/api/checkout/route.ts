@@ -42,9 +42,10 @@ export async function POST(request: Request) {
       body: JSON.stringify(payload),
       cache: 'no-store',
     });
-  } catch {
-    return fail('The shop is unavailable. Please try again in a moment.', 502);
-  }
+  } catch (err) {
+   console.error('Checkout could not reach the API:', err);
+   return fail('The shop is unavailable. Please try again in a moment.', 502);
+ }
 
   const data = await res.json().catch(() => null);
 

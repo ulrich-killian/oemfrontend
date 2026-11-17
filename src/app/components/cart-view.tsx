@@ -152,12 +152,15 @@ export function CartView() {
           Fix or remove the lines marked in red to continue. They aren’t counted in the subtotal.
         </p>
       )}
-      <button
-        disabled
-        className="mt-4 rounded bg-black px-5 py-3 text-white disabled:opacity-40"
-      >
-        Checkout (coming in the next step)
-      </button>
+      {hasProblems ? (
+  <button disabled className="mt-4 rounded bg-black px-5 py-3 text-white opacity-40">
+    Checkout
+  </button>
+) : (
+  <Link href="/checkout" className="mt-4 inline-block rounded bg-black px-5 py-3 text-white">
+    Checkout
+  </Link>
+)}
     </div>
   );
 }
