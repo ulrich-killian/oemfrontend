@@ -1,5 +1,6 @@
 import { LogoutButton } from '@/app/components/logout-button';
 import { adminGet } from '@/lib/admin-api';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Admin',
@@ -16,7 +17,11 @@ export default async function AdminHome() {
         <LogoutButton />
       </div>
       <p className="mt-2 text-gray-600">Signed in as {me.email}</p>
-      <p className="mt-6 text-gray-500">Orders, parts and messages will appear here.</p>
+      <nav className="mt-6">
+  <Link href="/admin/orders" className="underline">
+    Orders
+  </Link>
+</nav>
     </main>
   );
 }

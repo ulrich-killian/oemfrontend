@@ -16,3 +16,17 @@ export async function adminGet<T>(path: string): Promise<T> {
   if (!res.ok) throw new Error(`API ${res.status} for ${path}`);
   return res.json() as Promise<T>;
 }
+
+export async function adminGetOrNull<T>(path: string): Promise<T | null> {
+  const token = (await cookies()).get(ADMIN_COOKIE)?.value;
+  if (!token) redirect('/admin/login');
+
+  const res = await fetch(`${API_URL}${path}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: 'no-store',
+  });
+  if (res.status === 401) redirect('/admin/login');
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`API ${res.status} for ${path}`);
+  return res.json() as Promise<T>;
+}
