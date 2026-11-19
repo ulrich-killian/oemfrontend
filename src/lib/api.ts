@@ -1,7 +1,8 @@
 export const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
   process.env.API_URL ??
-  'https://oemproject.onrender.com';
+  (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:4000');
+
+  if (!API_URL) throw new Error('API_URL is not set');
 
 export type Brand = { id: number; name: string };
 export type Model = { id: number; name: string; year_from: number; year_to: number | null };
