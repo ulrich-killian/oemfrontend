@@ -17,9 +17,12 @@ export default async function AdminHome() {
         <LogoutButton />
       </div>
       <p className="mt-2 text-gray-600">Signed in as {me.email}</p>
-      <nav className="mt-6">
+      <nav className="mt-6 flex gap-6">
   <Link href="/admin/orders" className="underline">
     Orders
+  </Link>
+  <Link href="/admin/parts" className="underline">
+    Parts
   </Link>
 </nav>
     </main>
