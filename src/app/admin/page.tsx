@@ -24,6 +24,9 @@ export default async function AdminHome() {
   <Link href="/admin/parts" className="underline">
     Parts
   </Link>
+  <Link href="/admin/emails" className="underline">
+    Messages
+  </Link>
 </nav>
     </main>
   );
